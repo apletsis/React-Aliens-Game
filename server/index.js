@@ -6,8 +6,10 @@ const jwksClient = require('jwks-rsa');
 
 const PORT = 3001;
 
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+
 const client = jwksClient({
-    jwksUri: 'https://pletsisapps.eu.auth0.com/.well-known/jwks.json'
+    jwksUri: `${process.env.DOMAIN}/.well-known/jwks.json`
 });
 
 const players = [];

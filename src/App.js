@@ -6,8 +6,8 @@ import * as Auth0 from 'auth0-web';
 import io from 'socket.io-client';
 
 Auth0.configure({
-  domain: 'pletsisapps.eu.auth0.com',
-  clientID: 'XGeRCi1WIo06mLio1ni4Gr0jSurGZgy2',
+  domain: process.env.REACT_APP_DOMAIN,
+  clientID: process.env.REACT_APP_CLIENT_ID,
   redirectUri: 'http://localhost:3000/',
   responseType: 'token id_token',
   scope: 'openid profile manage:points',
@@ -86,7 +86,7 @@ class App extends Component {
 
   render() {
     return (
-      <Canvas 
+      <Canvas
         angle={this.props.angle}
         currentPlayer={this.props.currentPlayer}
         gameState={this.props.gameState}
